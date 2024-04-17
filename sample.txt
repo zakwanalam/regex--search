@@ -1,0 +1,5 @@
+john.doe@example.com
+jane.smith@gmail.com
+info@company.com
+hi
+hello
