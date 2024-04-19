@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 using namespace std;
 
 QString searchText(const QString& filePath, const QString& pattern) {
