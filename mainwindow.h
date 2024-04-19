@@ -12,6 +12,7 @@
 #include <iostream>
 #include <string>
 #include <QRegularExpression>
+
 using namespace std;
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
