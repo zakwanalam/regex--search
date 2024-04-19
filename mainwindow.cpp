@@ -9,22 +9,24 @@
 #include <fstream>
 #include <regex>
 #include <string>
-
+#include <QRegularExpression>
 using namespace std;
 
-string searchText(const string& filename, const string& pattern) {
-    ifstream file(filename);
-    if (!file.is_open()) {
-        cerr << "Error: Unable to open file '" << filename << "'" << endl;
-        return "";
+QString searchText(const QString& filePath, const QString& pattern) {
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qWarning() << "Failed to open file:" << file.errorString();
+        return QString(); // Return an empty QString on error
     }
 
-    regex reg(pattern);
-    string matchedLines;
-    string line;
-    while (getline(file, line)) {
-        if (regex_search(line, reg)) {
-            matchedLines += "Matched line: " + line + "\n";  // Append the matched line
+    QTextStream in(&file);
+    QString matchedLines;
+    QRegularExpression regex(pattern);
+
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        if (regex.match(line).hasMatch()) {
+            matchedLines.append(line).append("\n"); // Append matched lines to the result
         }
     }
     file.close();
@@ -44,8 +46,9 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-string matchedLines;
+QString matchedLines;
 QString fileContent;
+QString stdFilename;
 void MainWindow::on_pushButton_clicked()
 {
     QString filename = QFileDialog::getOpenFileName(
@@ -67,31 +70,16 @@ void MainWindow::on_pushButton_clicked()
     }
 
     file.close();
-
-
     // Call searchText function and set the output to textEdit_2
-    string stdFilename = filename.toStdString();
-    matchedLines = searchText(stdFilename, pattern);
+    stdFilename = filename;
 }
-
-void MainWindow::on_textEdit_copyAvailable(bool b)
-{
-    // This slot is called when the copy action is available in textEdit
-    // You can perform additional actions here if needed
-}
-
-void MainWindow::on_textEdit_2_copyAvailable(bool b)
-{
-    // This slot is called when the copy action is available in textEdit_2
-    // You can perform additional actions here if needed
-}
-
 void MainWindow::on_pushButton_2_clicked()
 {
-    QString userInput = regularExpressionBox->toPlainText().trimmed();
-    pattern = userInput.toStdString();
-    qDebug()<<userInput;
-    ui->textEdit_2->setPlainText(QString::fromStdString(matchedLines));
-    ui->textEdit->setPlainText(fileContent);
+    ui->search_output->clear();
+    ui->file_contents->clear();
+    QString userInput = ui->expressionSearch->toPlainText();
+    matchedLines = searchText(stdFilename, userInput);
+    ui->search_output->setPlainText(matchedLines);
+    ui->file_contents->setPlainText(fileContent);
 }
 

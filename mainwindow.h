@@ -5,7 +5,7 @@
 #include <QTextEdit>
 #include <string>
 #include <iostream>
-
+#include <QPlainTextEdit>
 using namespace std;
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,16 +21,11 @@ public:
 
 private slots:
     void on_pushButton_clicked();
-
-    void on_textEdit_copyAvailable(bool b);
-
-    void on_textEdit_2_copyAvailable(bool b);
-
     void on_pushButton_2_clicked();
 
 private:
     Ui::MainWindow *ui;
-    QTextEdit *regularExpressionBox;
+    QPlainTextEdit *regularExpressionBox;
     string pattern;
 };
 #endif // MAINWINDOW_H
