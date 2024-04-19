@@ -1,15 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QFileDialog>
-#include <QMessageBox>
-#include <QFile>
-#include <QTextStream>
-#include <QPlainTextEdit>
-#include <iostream>
-#include <fstream>
-#include <regex>
-#include <string>
-#include <QRegularExpression>
 using namespace std;
 
 QString searchText(const QString& filePath, const QString& pattern) {

@@ -3,9 +3,15 @@
 
 #include <QMainWindow>
 #include <QTextEdit>
-#include <string>
 #include <iostream>
 #include <QPlainTextEdit>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QFile>
+#include <QTextStream>
+#include <iostream>
+#include <string>
+#include <QRegularExpression>
 using namespace std;
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
