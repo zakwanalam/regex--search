@@ -12,12 +12,14 @@ QString searchText(const QString& filePath, const QString& pattern) {
 
     QTextStream in(&file);
     QString matchedLines;
-    QRegularExpression regex(pattern);
+    QRegularExpression emailRegex(pattern);
 
     while (!in.atEnd()) {
         QString line = in.readLine();
-        if (regex.match(line).hasMatch()) {
-            matchedLines.append(line).append("\n"); // Append matched lines to the result
+        QRegularExpressionMatchIterator matchIterator = emailRegex.globalMatch(line);
+        while (matchIterator.hasNext()) {
+            QRegularExpressionMatch match = matchIterator.next();
+            matchedLines.append(match.captured(0)).append("\n"); // Append matched email addresses to the result
         }
     }
     file.close();
@@ -44,13 +46,13 @@ void MainWindow::on_pushButton_clicked()
 {
     QString filename = QFileDialog::getOpenFileName(
         this, tr("Files"),
-        "C:\\Users\\Lenovo L460\\Desktop\\TOA",
+        "C:/Users/Zakwan Alam/OneDrive/Desktop/regex--search",
         "Text File (*.txt)"
         );
 
     QFile file(filename);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QMessageBox::warning(this, tr("Error"), tr("Could not open file."));
+        QMessageBox::warning(this, tr("Error"), tr("No file opened"));
         return;
     }
 
