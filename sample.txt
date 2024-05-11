@@ -2,9 +2,21 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
 when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
 It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-john.doe@example.com
+john.doe@example.pk
 jane.smith@gmail.com
-info@company.com
+info@company.org
+12345
+22k-4229 22k-4221
+22k-4367
+365.123.14.1
+165.123.14.201
+165.123.14.4
+165.123.14.44.67
+A-183,Scheme 33,Karachi,Pakistan
+R-2043,Gulshan-e-Iqbal,Karachi,Pakistan
+R-10,Saddar,Karachi,Pakistan
 It was popularised zakwanalam07@gmail.com in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop are123@gmail.com with bcd324@hotmail.comasg@outlook.com publishing 
 software like Aldus PageMaker including versions of Lorem Ipsum.
+12345678910
+76246872646241
 
